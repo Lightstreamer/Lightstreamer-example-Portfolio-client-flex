@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark" 
+               xmlns:mx="library://ns.adobe.com/flex/mx" 
+               xmlns:my="flex_demo.*" 
+               xmlns:ns="com.lightstreamer.as_client.item_renderers.*" 
+               preinitialize="loadVars()" creationComplete="init()" minWidth="955" minHeight="600" backgroundColor="#000000">
+  
+  <mx:Image buttonMode="true" click="flash.external.ExternalInterface.call('moveOut','http://www.lightstreamer.com/');" x="39" y="10" height="50" width="193" source="img/logo.png" useHandCursor="true" toolTip="Lightstreamer Home"/>
+  <mx:Image id="statusImg" x="10" y="10" height="51" width="21" source="img/status_disconnected.png" toolTip="Disconnected from Push Server"/>
+  <s:Label x="325" y="32" text="Lightstreamer :: Flex :: Portfolio Demo" color="white" width="335" height="28" fontSize="15" verticalAlign="middle" fontFamily="Verdana"/>
+  
+  <mx:DataGrid width="696" x="10" height="348" id="tableView" y="80"  >
+    <mx:columns>
+      <mx:DataGridColumn dataField="key" headerText="Key" />
+      <mx:DataGridColumn dataField="command" headerText="Command" />
+      <mx:DataGridColumn dataField="stock_name" headerText="Stock">
+         <mx:itemRenderer>
+          <ns:HighlightCellItemRenderer colors="[0x00FFFF,0x0000A0]" hotTime="800" fadeTime="800">
+            <ns:hotStyles>
+              <fx:Object fontWeight="bold" />
+            </ns:hotStyles>
+          </ns:HighlightCellItemRenderer>
+         </mx:itemRenderer>
+      </mx:DataGridColumn>
+      <mx:DataGridColumn id="lastPriceColumn" textAlign="right" dataField="last_price" headerText="Price">
+        <mx:itemRenderer>
+          <my:CustomHighlightCellItemRenderer colors="[0x00FFFF,0x0000A0]" hotTime="0" fadeTime="800" />
+        </mx:itemRenderer>
+      </mx:DataGridColumn>
+      <mx:DataGridColumn id="qtyColumn" textAlign="right" dataField="qty" headerText="Quantity">
+        <mx:itemRenderer>
+          <ns:HighlightCellItemRenderer colors="[0x00FFFF,0x0000A0]" hotTime="800" fadeTime="800" />
+        </mx:itemRenderer>
+      </mx:DataGridColumn>
+      <mx:DataGridColumn textAlign="right" dataField="time" headerText="Time">
+        <mx:itemRenderer>
+          <ns:HighlightCellItemRenderer colors="[0x00FFFF,0x0000A0]" hotTime="800" fadeTime="800" />
+        </mx:itemRenderer>
+      </mx:DataGridColumn>
+      <mx:DataGridColumn id="cValColumn" textAlign="right" dataField="cval" headerText="Countervalue">
+        <mx:itemRenderer>
+          <my:CustomHighlightCellItemRenderer colors="[0x00FFFF,0x0000A0]" hotTime="0" fadeTime="800"/>
+        </mx:itemRenderer>
+      </mx:DataGridColumn>
+    </mx:columns>
+  </mx:DataGrid>
+  
+  <mx:DataGrid width="446" x="740" height="280" id="orderView" y="148" >
+    <mx:columns>
+      <mx:DataGridColumn width="60" dataField="prog" headerText="Prog" />
+      <mx:DataGridColumn dataField="stock" headerText="Stock" />
+      <mx:DataGridColumn width="40" dataField="order" headerText="Order"/>
+      <mx:DataGridColumn textAlign="right" width="60" dataField="qty" headerText="Quantity" />
+      <mx:DataGridColumn width="150" dataField="status" headerText="Status" />
+    </mx:columns>
+  </mx:DataGrid>	
+  
+  <s:Button id="buyButton" click="order('BUY');" label="Buy" x="740" y="111" width="80" enabled="false"/>
+  <s:Button id="sellButton" click="order('SELL');" label="Sell" x="822" y="111" width="80" enabled="false"/>
+  <s:Button id="burstButton" click="burst();" label="Random Orders" x="906" y="111" width="125" enabled="false"/>
+  <s:Label x="934" y="80" text="Quantity" color="#FFFFFF" width="60" height="23" fontSize="14" verticalAlign="bottom" fontFamily="Verdana"/>
+  <s:TextInput id="messageField" enter="order('BUY')" x="999" y="81"  width="73" enabled="false" restrict="0-9"/>
+  
+  <s:ComboBox id="stockCombo" x="740" y="80" width="186" enabled="false" restrict="">
+    <mx:ArrayList>
+      <fx:String>Anduct</fx:String>
+      <fx:String>Ations Europe</fx:String>
+      <fx:String>Bagies Consulting</fx:String>
+      <fx:String>BAY Corporation</fx:String>
+      <fx:String>CON Consulting</fx:String>
+      <fx:String>Corcor PLC</fx:String>
+      <fx:String>CVS Asia</fx:String>
+      <fx:String>Datio PLC</fx:String>
+      <fx:String>Dentems</fx:String>
+      <fx:String>ELE Manufacturing</fx:String>
+      <fx:String>Exacktum Systems</fx:String>
+      <fx:String>KLA Systems Inc</fx:String>
+      <fx:String>Lted Europe</fx:String>
+      <fx:String>Magasconall Capital</fx:String>
+      <fx:String>MED</fx:String>
+      <fx:String>Mice Investments</fx:String>
+      <fx:String>Micropline PLC</fx:String>
+      <fx:String>Nologicroup Devices</fx:String>
+      <fx:String>Phing Technology</fx:String>
+      <fx:String>Pres Partners</fx:String>
+      <fx:String>Quips Devices</fx:String>
+      <fx:String>Ress Devices</fx:String>
+      <fx:String>Sacle Research</fx:String>
+      <fx:String>Seaging Devices</fx:String>
+      <fx:String>Sems Systems, Inc</fx:String>
+      <fx:String>Softwora Consulting</fx:String>
+      <fx:String>Systeria Develop</fx:String>
+      <fx:String>Thewlec Asia</fx:String>
+      <fx:String>Virtutis</fx:String>
+      <fx:String>Yahl</fx:String>
+    </mx:ArrayList>
+  </s:ComboBox>
+  
+  
+  
+  
+  <fx:Script>
+    <![CDATA[
+      import com.lightstreamer.as_client.ConnectionInfo;
+      import com.lightstreamer.as_client.LSClient;
+      import com.lightstreamer.as_client.Message;
+      import com.lightstreamer.as_client.VisualTable;
+      import com.lightstreamer.as_client.events.SendMessageAbortEvent;
+      import com.lightstreamer.as_client.events.SendMessageErrorEvent;
+      import com.lightstreamer.as_client.events.SendMessageProcessedEvent;
+      import com.lightstreamer.as_client.events.StatusChangeEvent;
+      import com.lightstreamer.as_client.events.SubscriptionEvent;
+      import com.lightstreamer.as_client.events.UnsubscriptionEvent;
+      import com.lightstreamer.as_client.logger.Logger;
+      import com.lightstreamer.as_client.logger.TraceAppender;
+      
+      import mx.collections.ArrayCollection;
+      import mx.controls.Alert;
+      import mx.events.CollectionEvent;
+      import mx.events.CollectionEventKind;
+      import mx.events.DataGridEvent;
+      import mx.events.PropertyChangeEvent;
+      
+      [Bindable]
+      public var portfolioTable:VisualTable;
+      [Bindable]
+      public var orders:ArrayCollection = new ArrayCollection();
+      
+      public var client:LSClient = new LSClient();
+      public var cInfo:ConnectionInfo = new ConnectionInfo();
+      
+      public var host:String = "localhost"; 
+      public var port:uint = 80;
+      public var protocol:String = "http";
+      
+      public function loadVars():void {
+        if (this.parameters.host) {
+          host = this.parameters.host;
+        }
+        if (this.parameters.port && !isNaN(this.parameters.port)) {
+          port = new uint(this.parameters.port);
+        }
+        if (this.parameters.protocol) {
+          var tmpProtocol:String = this.parameters.protocol;
+          if (tmpProtocol.toLowerCase() == "http" || tmpProtocol.toLowerCase() == "https") {
+            protocol = this.parameters.protocol;
+          }
+        }
+      }
+      
+     
+      
+      public function init():void {
+        orderView.dataProvider = orders;
+      
+        client = new LSClient();
+        client.addEventListener(StatusChangeEvent.STATUS_CHANGE,onStatusChange);
+        //client.addEventListener(ServerErrorEvent.SERVER_ERROR,onServerError);
+        //client.addEventListener(ConnectionDropEvent.CONNECTION_DROP,onConnectionDrop);
+        //client.addEventListener(ControlConnectionErrorEvent.CONTROL_CONNECTION_ERROR,onControlConnectionError);
+        //DataErrorEvent
+                
+        client.addEventListener(SendMessageErrorEvent.SEND_MESSAGE_ERROR,onSendMessageErrorEvent);
+        client.addEventListener(SendMessageAbortEvent.SEND_MESSAGE_ABORT,onSendMessageAbort);
+        client.addEventListener(SendMessageProcessedEvent.SEND_MESSAGE_PROCESSED,onSendMessageProcessed);
+        
+        cInfo.server = host;
+        cInfo.adapterSet = "DEMO";
+        cInfo.controlPort = port;
+        cInfo.port = port;
+        cInfo.controlProtocol = protocol;
+        cInfo.protocol = protocol;
+        
+        try {
+          ExternalInterface.addCallback("onUnload",function():void { 
+            if (client != null) {
+              //Close any connection to Lightstreamer 
+              //Server
+              client.closeConnection();
+            }
+          });   
+        } catch (ei:Error) {
+          Alert.show(ei.message);
+        }
+        
+        try {
+          client.openConnection(cInfo);
+        } catch(e:Error) {
+          Alert.show(e.message);
+        }
+        
+        portfolioTable = new VisualTable(["portfolio1"],["key","command","qty"],"COMMAND");
+        portfolioTable.dataAdapter = "PORTFOLIO_ADAPTER";
+        portfolioTable.setMultiMetapush(["stock_name","last_price","time"],"QUOTE_ADAPTER");
+        portfolioTable.snapshotRequired = true;
+        portfolioTable.addEventListener(SubscriptionEvent.SUBSCRIPTION,enableInput);
+        portfolioTable.addEventListener(UnsubscriptionEvent.UNSUBSCRIPTION,disableInput);
+        //portfolioTable.addEventListener(SubscriptionErrorEvent.SUBSCRIPTION_ERROR,onSubscriptionError);
+        //portfolioTable.addEventListener(EndOfSnapshotEvent.END_OF_SNAPSHOT,onEOS);
+        //portfolioTable.addEventListener(LostUpdatesEvent.LOST_UPDATES,onLost);
+        portfolioTable.addEventListener(CollectionEvent.COLLECTION_CHANGE,onChange);
+        
+        lastPriceColumn.sortCompareFunction = numericSort('last_price');
+        qtyColumn.sortCompareFunction = numericSort('qty');
+        cValColumn.sortCompareFunction = numericSort('cval');
+        
+        tableView.dataProvider = portfolioTable;
+        
+        client.subscribeTable(portfolioTable);
+      
+      }
+           
+      
+      public function onStatusChange(e:StatusChangeEvent):void {
+        if (e.status == LSClient.DISCONNECTED) {
+          statusImg.source = "img/status_disconnected.png";
+          statusImg.toolTip = "Disconnected from Push Server";
+          disableInput();
+          
+        } else if (e.status == LSClient.CONNECTING) {
+          statusImg.source = "img/status_disconnected.png";
+          statusImg.toolTip = "Trying to connect to Push Server...";
+          disableInput();
+          
+        } else if (e.status == LSClient.POLLING) {
+          statusImg.source = "img/status_connected_polling.png";
+          statusImg.toolTip = "Connected to Push Server (Smart polling)";
+          if(e.previousStatus == LSClient.STALLED) {
+            enableInput();
+          } else {
+            offset = orders.length;
+          }
+        } else if (e.status == LSClient.STREAMING) {
+          statusImg.source = "img/status_connected_streaming.png";
+          statusImg.toolTip = "Connected to Push Server (Streaming)";
+          if(e.previousStatus == LSClient.STALLED) {
+            enableInput();
+          } else {
+            offset = orders.length;
+          }
+        } else if (e.status == LSClient.STALLED) {
+          statusImg.source = "img/status_stalled.png";
+          statusImg.toolTip = "Connection to Push Server stalled";
+          disableInput();
+        }
+      }
+      
+      public function enableInput(e:*=null):void {
+        messageField.enabled = true;
+        buyButton.enabled = true;
+        sellButton.enabled = true;
+        burstButton.enabled = true;
+        stockCombo.enabled = true;
+      }
+      
+      public function disableInput(e:*=null):void {
+        messageField.enabled = false;
+        buyButton.enabled = false;
+        sellButton.enabled = false;
+        burstButton.enabled = false;
+        stockCombo.enabled = false;
+      }
+      
+      public function burst():void {
+        for (var i:uint=0; i<20; i++) {
+          orderExe(i%2?"BUY":"SELL",Math.round(Math.random()*100),Math.round(Math.random()*29));
+        }
+      }
+      
+      public var offset:uint = 0;
+      
+      public function order(order:String):void {
+        if (stockCombo.selectedIndex <= -1) {
+          stockCombo.errorString = "Please select a stock";
+          return;
+        }
+        stockCombo.errorString = "";
+        
+        if (!messageField.text || parseInt(messageField.text) <= 0) {
+          messageField.errorString = "Please insert a number > 0";
+          return;
+        }
+        messageField.errorString = "";
+        
+        if (orderExe(order,parseInt(messageField.text),stockCombo.selectedIndex)) {
+          messageField.text = "";
+          stockCombo.selectedIndex = -1;
+        }
+        
+      }
+      
+      public function orderExe(order:String,qty:uint,stockIndex:uint):Boolean {
+        var item:String = "item"+(stockIndex+1);
+        var stockName:String = stockCombo.dataProvider.getItemAt(stockIndex) as String;
+       
+        //client.sendMessage(order+'|portfolio1|'+item+"|"+qty); //old send message
+        
+        var mex:Message = new Message(order+'|portfolio1|'+item+"|"+qty,Message.UNORDERED_MESSAGES,3000);
+        var prog:uint = client.sendMessage(mex);
+        
+        if (prog) {
+          orders.addItem({prog:(prog+offset),stock:stockName,qty:qty,order:order,status:"PROCESSING"});
+          return true;
+        }
+        return false;
+
+      }
+      
+      public function onSendMessageErrorEvent(e:SendMessageErrorEvent):void {
+        updateOrder(e.messageProg,"ERROR " + e.errorCode + " " + e.errorMessage);
+      }
+      public function onSendMessageAbort(e:SendMessageAbortEvent):void {
+        updateOrder(e.messageProg,"ABORTED");
+      }
+      public function onSendMessageProcessed(e:SendMessageProcessedEvent):void {
+        updateOrder(e.messageProg,"PROCESSED");
+      }
+      
+      public function updateOrder(listPos:uint,newStatus:String):void {
+        listPos += (offset-1);
+        orders.source[listPos].status = newStatus;
+        orders.itemUpdated(orders.source[listPos],"status","PROCESSING",newStatus);
+      }
+        
+      
+      public var firstSort:Boolean = true;
+      
+      public function onChange(evt:CollectionEvent):void {
+        if (!(evt.currentTarget is VisualTable)) {
+          throw new Error("UNEXPECTED EVENT");
+        }
+        
+        if (evt.kind == CollectionEventKind.UPDATE) { 
+        
+          var table:VisualTable = evt.currentTarget as VisualTable;
+    
+          for (var i:* in evt.items) {
+            var pcevt:PropertyChangeEvent = evt.items[i] as PropertyChangeEvent;
+            if (!isNaN(pcevt.source["last_price"])) {
+              pcevt.source["cval"] = pcevt.source["last_price"] * pcevt.source["qty"];
+            } 
+            
+           
+          }
+        } 
+      }
+      
+      public function numericSort(field:String):Function {
+        return function (obj1:Object, obj2:Object):int {
+          if (obj1[field] === obj2[field]) {
+            return 0;
+          }
+          if (obj1[field] === null) {
+            return -1;
+          }
+          if (obj2[field] === null) {
+            return 1;
+          }
+          else return int(obj1[field]) - int(obj2[field]) > 0 ? 1 : -1;
+        }
+      }
+      
+    ]]>
+  </fx:Script>
+</s:Application>
