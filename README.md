@@ -47,7 +47,7 @@ In order to proceed with the build process of this demo, this project includes t
   Please, download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK (that is located under the /DOCS-SDKs/sdk_client_flex/lib folder) into this folder of the project.
 
 
-# Depoly #
+# Deploy #
 
 The "deploy" folder contains a deployment image of the demo, which includes a container page and other web resources. If you have not skipped the previous step you have to complete this by replacing the built Flex application (Flex4PortfolioDemo.swf).
 This deployment image is ready to be deployed under Lightstreamer's internal Web Server, by copying all the contents into the "pages" directory.<br>
