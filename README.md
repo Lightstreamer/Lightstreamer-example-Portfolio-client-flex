@@ -1,6 +1,9 @@
 
-Lightstreamer Portfolio Demo Client for Adobe Flex SDK
-======================================================
+# Lightstreamer Portfolio Demo Client for Adobe Flex SDK #
+
+This project contains simple Flex applications fed through a Lightstreamer connection based on [Lightstreamer Portfolio Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java); the demos are written for Flex 4 SDK.
+
+## Flex Portfolio Demo ##
 
 <table>
   <tr>
@@ -31,22 +34,23 @@ This portfolio is shared among all the connected users, so you can connect to th
 Tables involved:
 * A [VisualTable](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/VisualTable.html) containing 1 item subscribed to in <b>COMMAND</b> mode. Each added row automatically provokes an underlying subscription to a sub-item in <b>MERGE</b> mode, to get the real-time price for that specific stock from another feed (the same as the [Stock-List Demos](https://github.com/Weswit/Lightstreamer-example-Stocklist-client-javascript)). When a row is deleted, the underlying sub-item is automatically unsubscribed from.
 
+# Build #
 
-Build and Run
--------------
+If you want to skip the build process of this demo please note that the "deploy" folder of this project contains a ready-made deployment resource for Lightstreamer's internal Web Server.<br>
 
-The /Flex4_PortfolioDemo folder of this project is comprised of the following folders:
-
+In order to proceed with the build process of this demo, this project includes the following sub-folders:
 * /src<br>
   Contains the sources to build the Flex application. The code is based on Flex 4 SDK.
 
 * /lib<br>
   Should contain the Lightstreamer library to be used for the build process.<br>
-  Please, download the [Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK (that is located under the DOCS-SDKs/sdk_client_flex/lib folder) into this folder of the project.
+  Please, download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK (that is located under the /DOCS-SDKs/sdk_client_flex/lib folder) into this folder of the project.
 
-* /deploy<br>
-  Contains a deployment image of the demo, which includes a container page and other web resources. You have to complete this by adding in the deploy/Flex4_PortfolioDemo folder the swfobject.js version 2.2 file form [SWFObject 2](http://code.google.com/p/swfobject/downloads/list) and the built Flex application (Flex4PortfolioDemo.swf).
-  This deployment image is ready to be deployed under Lightstreamer's internal Web Server, by copying all the contents into the "pages" directory.
+
+# Depoly #
+
+The "deploy" folder contains a deployment image of the demo, which includes a container page and other web resources. If you have not skipped the previous step you have to complete this by replacing the built Flex application (Flex4PortfolioDemo.swf).
+This deployment image is ready to be deployed under Lightstreamer's internal Web Server, by copying all the contents into the "pages" directory.<br>
 
 By the current configuration, the demo tries to access Lightstreamer Server by using the protocol, hostname and port from which the "index.html" page was requested; in other words, the demo assumes that the static resources are deployed inside Lightstreamer Server.<br>
 In order to deploy the demo static resources on an external Web Server, some changes are needed on the deployment image before or after copying it into the Web Server folders.
@@ -57,15 +61,18 @@ See the <flex_crossdomain_enabled> element in the Server configuration file for 
 Anyway the [PORTFOLIO_ADAPTER](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java), [QUOTE_ADAPTER](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java), and [PortfolioMetadataAdapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java) have to be deployed in your local Lightstreamer server instance. The factory configuration of Lightstreamer server already provides this adapter deployed.<br>
 The demos are now ready to be launched.
 
-See Also
---------
+# See Also #
 
-* [Lightstreamer Portfolio Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript)
+## Lightstreamer Adapters needed by these demo clients ##
+
 * [Lightstreamer Portfolio Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java)
 * [Lightstreamer StockList Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java)
-* [Lightstreamer Reusable Metadata Adapter in Java](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)
 
-Lightstreamer Compatibility Notes
----------------------------------
+## Similar demo clients that may interest you ##
+
+* [Lightstreamer Portfolio Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript)
+* [Lightstreamer StockList Demo Client for Adobe Flex SDK]()
+
+# Lightstreamer Compatibility Notes #
 
 - Compatible with Lightstreamer Flex client API version 2.1 or newer.
