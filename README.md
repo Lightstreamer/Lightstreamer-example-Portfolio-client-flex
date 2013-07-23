@@ -36,9 +36,9 @@ Tables involved:
 
 # Build #
 
-If you want to skip the build process of this demo please note that the "deploy" folder of this project contains a ready-made deployment resource for Lightstreamer's internal Web Server.<br>
+If you want to skip the build process of this demo please note that in the [deploy release](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-flex/releases) of this project you can find the "deploy.zip" file that contains a ready-made deployment resource for Lightstreamer's internal Web Server.<br>
 
-In order to proceed with the build process of this demo, this project includes the following sub-folders:
+Otherwise, in order to proceed with the build process of this demo, this project includes the following sub-folders:
 * /src<br>
   Contains the sources to build the Flex application. The code is based on Flex 4 SDK.
 
@@ -49,7 +49,9 @@ In order to proceed with the build process of this demo, this project includes t
 
 # Deploy #
 
-The "deploy" folder contains a deployment image of the demo, which includes a container page and other web resources. If you have not skipped the previous step you have to complete this by replacing the built Flex application (Flex4PortfolioDemo.swf).
+The "deploy" folder contains a deployment image of the demo, which includes a container page and other web resources. If you have not skipped the previous step you have to complete this with the built Flex application (Flex4PortfolioDemo.swf) and the swfobject.js version 2.2 file from [SWFObject 2](http://code.google.com/p/swfobject/downloads/list).
+Otherwise get the ready-made "Flex4_PortfolioDemo" deploy folder from "deploy.zip" of the [latest release](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-flex/releases) of this project.
+
 This deployment image is ready to be deployed under Lightstreamer's internal Web Server, by copying all the contents into the "pages" directory.<br>
 
 By the current configuration, the demo tries to access Lightstreamer Server by using the protocol, hostname and port from which the "index.html" page was requested; in other words, the demo assumes that the static resources are deployed inside Lightstreamer Server.<br>
