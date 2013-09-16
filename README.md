@@ -1,7 +1,7 @@
 
 # Lightstreamer Portfolio Demo Client for Adobe Flex SDK #
 
-This project contains simple Flex applications fed through a Lightstreamer connection based on [Lightstreamer Portfolio Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java); the demos are written for Flex 4 SDK.
+This project contains a simple Flex application fed through a Lightstreamer connection based on [Lightstreamer Portfolio Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java); the demo is written for Flex 4 SDK.
 
 ## Flex Portfolio Demo ##
 
@@ -65,7 +65,7 @@ The demos are now ready to be launched.
 
 # See Also #
 
-## Lightstreamer Adapters needed by these demo clients ##
+## Lightstreamer Adapters needed by this demo client ##
 
 * [Lightstreamer Portfolio Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java)
 * [Lightstreamer StockList Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java)
@@ -73,7 +73,7 @@ The demos are now ready to be launched.
 ## Similar demo clients that may interest you ##
 
 * [Lightstreamer Portfolio Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript)
-* [Lightstreamer StockList Demo Client for Adobe Flex SDK]()
+* [Lightstreamer StockList Demo Client for Adobe Flex SDK](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex)
 
 # Lightstreamer Compatibility Notes #
 
