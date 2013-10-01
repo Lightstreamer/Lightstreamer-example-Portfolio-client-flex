@@ -8,7 +8,7 @@ This project contains a simple Flex application fed through a Lightstreamer conn
 <table>
   <tr>
     <td style="text-align: left">
-      &nbsp;<a href="http://www.lightstreamer.com/demo/Flex_PortfolioDemo/" target="_blank"><img src="http://www.lightstreamer.com/img/demo/screen_flexportfolio.png"></a>&nbsp;
+      &nbsp;<a href="http://www.lightstreamer.com/demo/Flex_PortfolioDemo/" target="_blank"><img src="screen_flexportfolio.png"></a>&nbsp;
       
     </td>
     <td>
@@ -77,4 +77,5 @@ The demos are now ready to be launched.
 
 # Lightstreamer Compatibility Notes #
 
-- Compatible with Lightstreamer Flex client API version 2.1 or newer.
+- Compatible with Lightstreamer Flex Client API version 2.1 or newer.
+- For Lightstreamer Allegro (+ Flex Client API support), Presto, Vivace.
