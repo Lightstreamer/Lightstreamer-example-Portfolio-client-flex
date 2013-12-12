@@ -2,8 +2,6 @@
 
 This project contains a simple Flex application fed through a Lightstreamer connection based on [Lightstreamer - Portfolio Demo - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java); the demo is written for Flex 4 SDK.
 
-## Flex Portfolio Demo ##
-
 <table>
   <tr>
     <td style="text-align: left">
@@ -71,7 +69,7 @@ The demos are now ready to be launched.
 
 ## Similar demo clients that may interest you ##
 
-* [Lightstreamer - Portfolio Demo - HTML Client](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript)
+* [Lightstreamer - Portfolio Demos - HTML Clients](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript)
 * [Lightstreamer - Stock-List Demos - Flex Clients](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex)
 
 # Lightstreamer Compatibility Notes #
