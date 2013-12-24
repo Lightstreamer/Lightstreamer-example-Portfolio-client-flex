@@ -1,5 +1,7 @@
 # Lightstreamer - Portfolio Demo - Flex Client #
 
+<!-- START DESCRIPTION lightstreamer-example-portfolio-client-flex -->
+
 This project contains a simple Flex application fed through a Lightstreamer connection based on [Lightstreamer - Portfolio Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java); the demo is written for Flex 4 SDK.
 
 <table>
@@ -30,6 +32,8 @@ This portfolio is shared among all the connected users, so you can connect to th
 
 Tables involved:
 * A [VisualTable](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/VisualTable.html) containing 1 item subscribed to in <b>COMMAND</b> mode. Each added row automatically provokes an underlying subscription to a sub-item in <b>MERGE</b> mode, to get the real-time price for that specific stock from another feed (the same as the [Stock-List Demos](https://github.com/Weswit/Lightstreamer-example-Stocklist-client-javascript)). When a row is deleted, the underlying sub-item is automatically unsubscribed from.
+
+<!-- END DESCRIPTION lightstreamer-example-portfolio-client-flex -->
 
 # Build #
 
@@ -64,8 +68,11 @@ The demos are now ready to be launched.
 
 ## Lightstreamer Adapters needed by this demo client ##
 
+<!-- START RELATED_ENTRIES -->
 * [Lightstreamer - Portfolio Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java)
 * [Lightstreamer - Stock-List Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java)
+
+<!-- END RELATED_ENTRIES -->
 
 ## Similar demo clients that may interest you ##
 
