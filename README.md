@@ -4,18 +4,8 @@
 
 This project contains a simple Flex application fed through a Lightstreamer connection based on [Lightstreamer - Portfolio Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java); the demo is written for Flex 4 SDK.
 
-<table>
-  <tr>
-    <td style="text-align: left">
-      &nbsp;<a href="http://www.lightstreamer.com/demo/Flex_PortfolioDemo/" target="_blank"><img src="screen_flexportfolio.png"></a>&nbsp;
-      
-    </td>
-    <td>
-      &nbsp;An online demonstration is hosted on our servers at:<br>
-      &nbsp;<a href="http://www.lightstreamer.com/demo/Flex_PortfolioDemo/" target="_blank">http://www.lightstreamer.com/demo/Flex_PortfolioDemo/</a>
-    </td>
-  </tr>
-</table>
+[![screenshot](screen_flexportfolio_large.png)](http://demos.lightstreamer.com/Flex_PortfolioDemo/)<br>
+An online demonstration is hosted on our servers at:[http://demos.lightstreamer.com/Flex_PortfolioDemo/](http://demos.lightstreamer.com/Flex_PortfolioDemo/)<br>
 
 This is a Flex version of the [Portfolio Demo](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript#portfolio-demo), where a list of sent orders is kept and updated with the status of the request.<br>
 
@@ -66,7 +56,7 @@ The demos are now ready to be launched.
 
 # See Also #
 
-## Lightstreamer Adapters needed by this demo client ##
+## Lightstreamer Adapters Needed by This Demo Client ##
 
 <!-- START RELATED_ENTRIES -->
 * [Lightstreamer - Portfolio Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java)
@@ -74,7 +64,7 @@ The demos are now ready to be launched.
 
 <!-- END RELATED_ENTRIES -->
 
-## Similar demo clients that may interest you ##
+## Related Projects ##
 
 * [Lightstreamer - Portfolio Demos - HTML Clients](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript)
 * [Lightstreamer - Stock-List Demos - Flex Clients](https://github.com/Weswit/Lightstreamer-example-StockList-client-flex)
