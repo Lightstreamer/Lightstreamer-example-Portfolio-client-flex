@@ -133,6 +133,7 @@
       public var host:String = "localhost"; 
       public var port:uint = 80;
       public var protocol:String = "http";
+      public var adapterSet:String = "DEMO";
       
       public function loadVars():void {
         if (this.parameters.host) {
@@ -146,6 +147,9 @@
           if (tmpProtocol.toLowerCase() == "http" || tmpProtocol.toLowerCase() == "https") {
             protocol = this.parameters.protocol;
           }
+        }
+        if (this.parameters.adapterSet) {
+          adapterSet = this.parameters.adapterSet;
         }
       }
       
@@ -166,7 +170,7 @@
         client.addEventListener(SendMessageProcessedEvent.SEND_MESSAGE_PROCESSED,onSendMessageProcessed);
         
         cInfo.server = host;
-        cInfo.adapterSet = "DEMO";
+        cInfo.adapterSet = adapterSet;
         cInfo.controlPort = port;
         cInfo.port = port;
         cInfo.controlProtocol = protocol;
