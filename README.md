@@ -1,7 +1,7 @@
 # Lightstreamer - Portfolio Demo - Flex Client #
 
 <!-- START DESCRIPTION lightstreamer-example-portfolio-client-flex -->
-The *Portfolio Demo* simulate a portfolio management: it shows a list of stocks included in a portfolio and provide a simple order entry form. Changes to portfolio contents, due to new orders, are displayed on the page in real time. In addition to that, the *Full Version of the Portfolio Demo* shows, for each stock in the portfolio, also the current price, updated in real time from a market data feed.
+The *Portfolio Demo* simulate a portfolio management: it shows a list of stocks included in a portfolio and provide a simple order entry form. Changes to portfolio contents, as a result of new orders, are displayed on the page in real-time. In addition to that, the *Full Version of the Portfolio Demo* also shows, for each stock in the portfolio, the current price, updated in real-time from a market data feed.
 
 This project is a Flex version of the [Portfolio Demo - HTML Client](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-javascript#portfolio-demo---html-client), and includes a Flex client front-end for the [Lightstreamer - Portfolio Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java), written for Flex 4 SDK.
 
@@ -22,7 +22,7 @@ The left table shows the automatic binding of a Lightstreamer data table configu
 Using the form to the right, you can buy or sell a stock.
 Clicking the "Random Orders" button, 20 random orders are placed in batch mode. Orders are placed through the [LSClient.SendMessage](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/LSClient.html#sendMessage()) method.
 
-The DataGrid, below the orders form, mantains a list of executed orders and their statuses (PROCESSING, PROCESSED, ABORTED or ERROR). Such statuses are received by the demo code by listening for [SendMessageAbortEvent](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/events/SendMessageAbortEvent.html), [SendMessageErrorEvent](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/events/SendMessageErrorEvent.html), and [SendMessageProcessedEvent](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/events/SendMessageProcessedEvent.html) events and then placed in an ArrayCollection that is in turn bound to the DataGrid.<br>
+The DataGrid, below the orders form, mantains a list of executed orders and their statuses (PROCESSING, PROCESSED, ABORTED or ERROR). Such statuses are received by the demo code by listening for [SendMessageAbortEvent](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/events/SendMessageAbortEvent.html), [SendMessageErrorEvent](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/events/SendMessageErrorEvent.html), and [SendMessageProcessedEvent](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/events/SendMessageProcessedEvent.html) events and then placed in an ArrayCollection that is, in turn, bound to the DataGrid.<br>
 
 This portfolio is shared among all the connected users, so you can connect to this demo from different machines (or try at least different browsers on the same machine), then submit orders from one browser and see the updates displayed on another browser. The same portfolio is also shared among the various versions of the demo (Flex and HTML).
 
@@ -33,10 +33,10 @@ Tables involved:
 ## Install
 If you want to install a version of this demo, pointing to your local Lightstreamer Server instance, follow the steps below.
 
-* The *Flex Client Portfolio Demo*, needs both the *PORTFOLIO_ADAPTER*, from the *Portfolio Demo*, and the *QUOTE_ADAPTER*, from the *Stock-List Demo* (see [Lightstreamer - Stock-List Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-StockList-adapter-java)). As a prerequisite, the full version of the [Lightstreamer - Portfolio Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java) has to be deployed on your local Lightstreamer Server instance. Please follow the instruction in [Install the Portfolio Demo](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java#install-the-portfolio-demo) to install it.
+* The *Flex Client Portfolio Demo*, needs both the *PORTFOLIO_ADAPTER*, from the *Portfolio Demo*, and the *QUOTE_ADAPTER*, from the *Stock-List Demo* (see [Lightstreamer - Stock-List Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-StockList-adapter-java)). As a prerequisite, the full version of the [Lightstreamer - Portfolio Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java) has to be deployed on your local Lightstreamer Server instance. Please follow the instructions in [Install the Portfolio Demo](https://github.com/Weswit/Lightstreamer-example-Portfolio-adapter-java#install-the-portfolio-demo) to install it.
 * Get the `deploy.zip` file of the [latest release](https://github.com/Weswit/Lightstreamer-example-Portfolio-client-flex/releases), unzip it, and copy the `Flex4_PortfolioDemo` folder into the `pages` folder of your Lightstreamer Server installation.
-* The client demo configuration assumes that Lightstreamer Server, Lightstreamer Adapters and these clients are launched on the same machine. If you need to target a different Lightstreamer server, please edit the `index.html` file .
-The configuration lines for the hostname and port can be easily found at the beginning of the `index.html` file and can be modified manually, without the need for a recompilation. Then, in order to allow the page to get resources from a different server, the Web Server address has to be included in the `/crossdomain.xml` file deployed under Lightstreamer Server. See the `<flex_crossdomain_enabled>` element in the Server configuration file for details.
+* The client demo configuration assumes that Lightstreamer Server, Lightstreamer Adapters, and these clients are launched on the same machine. If you need to target a different Lightstreamer server, please edit the `index.html` file.
+The configuration lines for the hostname and port can be easily found at the beginning of the `index.html` file and can be modified manually, without the need for a recompilation. Then, to allow the page to get resources from a different server, the Web Server address has to be included in the `/crossdomain.xml` file deployed under Lightstreamer Server. See the `<flex_crossdomain_enabled>` element in the Server configuration file for details.
 * Open your browser and go to [http://localhost:8080/Flex4_PortfolioDemo](http://localhost:8080/Flex4_PortfolioDemo).
 
 ## Build 
@@ -44,7 +44,7 @@ To build your own version of `Flex4PortfolioDemo.swf`, instead of using the one 
 
 * Download this project. This project includes the following sub-folders:
     * `/src` contains the sources to build the Flex application (the code is based on Flex 4 SDK);
-    * `/lib` should contain the Lightstreamer library to be used for the build process.
+    * `/lib` should contain the Lightstreamer library, to be used for the build process.
 * Download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK, located under the `/DOCS-SDKs/sdk_client_flex/lib` folder, into the `lib` folder of the project.
 * Download `swfobject.js` version 2.2 file from [SWFObject 2](http://code.google.com/p/swfobject/downloads/list) copy it into the `lib` folder of the project.
 
@@ -67,4 +67,3 @@ To build your own version of `Flex4PortfolioDemo.swf`, instead of using the one 
 
 - Compatible with Lightstreamer Flex Client API version 2.1 or newer.
 - For Lightstreamer Allegro (+ Flex Client API support), Presto, Vivace.
-
