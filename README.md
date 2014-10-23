@@ -15,7 +15,7 @@ This project is a Flex version of the [Portfolio Demo - HTML Client](https://git
 
 ## Details
 
-This app uses the [Flex Client API for Lightstreamer](http://www.lightstreamer.com/distros/Lightstreamer_Allegro-Presto-Vivace_5_1_2_Colosseo_20140722/Lightstreamer/DOCS-SDKs/sdk_client_flex/doc/API-reference/index.html) to handle the communications with Lightstreamer Server and uses the **Flex DataGrid** to display the real-time data.
+This app uses the [Flex Client API for Lightstreamer](http://www.lightstreamer.com/docs/client_flex_api/index.html) to handle the communications with Lightstreamer Server and uses the **Flex DataGrid** to display the real-time data.
 
 The left table shows the automatic binding of a Lightstreamer data table configured to exploit "two-level push" with a Flex widget (a DataGrid). You can sort on any columns and drag the columns around.
 
