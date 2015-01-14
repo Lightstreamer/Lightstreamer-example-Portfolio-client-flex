@@ -133,7 +133,7 @@
       public var host:String = "localhost"; 
       public var port:uint = 80;
       public var protocol:String = "http";
-      public var adapterSet:String = "DEMO";
+      public var adapterSet:String = "FULLPORTFOLIODEMO";
       
       public function loadVars():void {
         if (this.parameters.host) {
