@@ -9,7 +9,7 @@ This project is a Flex version of the [Portfolio Demo - HTML Client](https://git
 
 [![screenshot](screen_flexportfolio_large.png)](http://demos.lightstreamer.com/Flex_PortfolioDemo)
 
-###[![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/Flex_PortfolioDemo)
+### [![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/Flex_PortfolioDemo)
 
 *Note. Real-Time simulated Portfolio data is received from the Lightstreamer Server deployed at [http://push.lightstreamer.com](http://push.lightstreamer.com).*
 
