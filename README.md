@@ -15,19 +15,19 @@ This project is a Flex version of the [Portfolio Demo - HTML Client](https://git
 
 ## Details
 
-This app uses the [Flex Client API for Lightstreamer](http://www.lightstreamer.com/docs/client_flex_api/index.html) to handle the communications with Lightstreamer Server and uses the **Flex DataGrid** to display the real-time data.
+This app uses the [Flex Client API for Lightstreamer](https://lightstreamer.com/api/ls-flex-client/latest/index.html) to handle the communications with Lightstreamer Server and uses the **Flex DataGrid** to display the real-time data.
 
 The left table shows the automatic binding of a Lightstreamer data table configured to exploit "two-level push" with a Flex widget (a DataGrid). You can sort on any columns and drag the columns around.
 
 Using the form to the right, you can buy or sell a stock.
-Clicking the "Random Orders" button, 20 random orders are placed in batch mode. Orders are placed through the [LSClient.SendMessage](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/LSClient.html#sendMessage()) method.
+Clicking the "Random Orders" button, 20 random orders are placed in batch mode. Orders are placed through the [LSClient.SendMessage](https://lightstreamer.com/api/ls-flex-client/latest/com/lightstreamer/as_client/LSClient.html#sendMessage()) method.
 
-The DataGrid, below the orders form, mantains a list of executed orders and their statuses (PROCESSING, PROCESSED, ABORTED or ERROR). Such statuses are received by the demo code by listening for [SendMessageAbortEvent](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/events/SendMessageAbortEvent.html), [SendMessageErrorEvent](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/events/SendMessageErrorEvent.html), and [SendMessageProcessedEvent](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/events/SendMessageProcessedEvent.html) events and then placed in an ArrayCollection that is, in turn, bound to the DataGrid.<br>
+The DataGrid, below the orders form, mantains a list of executed orders and their statuses (PROCESSING, PROCESSED, ABORTED or ERROR). Such statuses are received by the demo code by listening for [SendMessageAbortEvent](https://lightstreamer.com/api/ls-flex-client/latest/com/lightstreamer/as_client/events/SendMessageAbortEvent.html), [SendMessageErrorEvent](https://lightstreamer.com/api/ls-flex-client/latest/com/lightstreamer/as_client/events/SendMessageErrorEvent.html), and [SendMessageProcessedEvent](https://lightstreamer.com/api/ls-flex-client/latest/com/lightstreamer/as_client/events/SendMessageProcessedEvent.html) events and then placed in an ArrayCollection that is, in turn, bound to the DataGrid.<br>
 
 This portfolio is shared among all the connected users, so you can connect to this demo from different machines (or try at least different browsers on the same machine), then submit orders from one browser and see the updates displayed on another browser. The same portfolio is also shared among the various versions of the demo (Flex and HTML).
 
 Tables involved:
-* A [VisualTable](http://www.lightstreamer.com/docs/client_flex_asdoc/com/lightstreamer/as_client/VisualTable.html) containing 1 item subscribed to in <b>COMMAND</b> mode. Each added row automatically provokes an underlying subscription to a sub-item in <b>MERGE</b> mode, to get the real-time price for that specific stock from another feed (the same as the [Stock-List Demos](https://github.com/Lightstreamer/Lightstreamer-example-Stocklist-client-javascript)). When a row is deleted, the underlying sub-item is automatically unsubscribed from.
+* A [VisualTable](https://lightstreamer.com/api/ls-flex-client/latest/com/lightstreamer/as_client/VisualTable.html) containing 1 item subscribed to in <b>COMMAND</b> mode. Each added row automatically provokes an underlying subscription to a sub-item in <b>MERGE</b> mode, to get the real-time price for that specific stock from another feed (the same as the [Stock-List Demos](https://github.com/Lightstreamer/Lightstreamer-example-Stocklist-client-javascript)). When a row is deleted, the underlying sub-item is automatically unsubscribed from.
 
 <!-- END DESCRIPTION lightstreamer-example-portfolio-client-flex -->
 ## Install
