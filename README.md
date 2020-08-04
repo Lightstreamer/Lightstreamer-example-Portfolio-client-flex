@@ -45,7 +45,7 @@ To build your own version of `Flex4PortfolioDemo.swf`, instead of using the one 
 * Download this project. This project includes the following sub-folders:
     * `/src` contains the sources to build the Flex application (the code is based on Flex 4 SDK);
     * `/lib` should contain the Lightstreamer library, to be used for the build process.
-* Download the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) and copy the Lightstreamer_as_client.swc file from the Lightstreamer Flex Client SDK, located under the `/DOCS-SDKs/sdk_client_flex/lib` folder, into the `lib` folder of the project.
+* Download the latest `Lightstreamer_as_client.swc` library file from the [Lightstreamer Flex Client SDK resources](https://lightstreamer.com/res/ls-flex-client/latest/usage.html) into the `lib` folder of the project.
 * Download `swfobject.js` version 2.2 file from [SWFObject 2](http://code.google.com/p/swfobject/downloads/list) copy it into the `lib` folder of the project.
 
 ## See Also
